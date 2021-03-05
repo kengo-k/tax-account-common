@@ -1,3 +1,4 @@
 export class JournalSearchResponse {
-  public date: string;
+  //public date: string;
+  constructor(x?: number | undefined) {}
 }

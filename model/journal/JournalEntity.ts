@@ -34,6 +34,7 @@ export class JournalEntity implements IJournalEntity {
     this.date = values.date;
     this.karikata_cd = values.karikata_cd;
     this.karikata_value = values.karikata_value;
+    this.note = values.note;
     this.kasikata_cd = values.kasikata_cd;
     this.kasikata_value = values.kasikata_value;
     this.checked = values.checked;

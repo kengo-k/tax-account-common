@@ -1,3 +1,5 @@
+import { Entity } from "@model/Entity";
+
 export interface IJournalEntity {
   id?: number | undefined;
   nendo: string;
@@ -12,7 +14,7 @@ export interface IJournalEntity {
   updated_at?: string | undefined;
 }
 
-export class JournalEntity implements IJournalEntity {
+export class JournalEntity extends Entity implements IJournalEntity {
   public id: number | undefined;
   public nendo: string;
   public date: string;
@@ -24,7 +26,8 @@ export class JournalEntity implements IJournalEntity {
   public checked: string;
   public created_at: string | undefined;
   public updated_at: string | undefined;
-  constructor(initialValues: IJournalEntity | undefined) {
+  constructor(initialValues: Partial<IJournalEntity> | undefined = undefined) {
+    super();
     let values: any = {};
     if (initialValues != null) {
       values = initialValues;

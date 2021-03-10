@@ -1,4 +1,4 @@
-import { Entity } from "@model/Entity";
+import { Entity } from "@common/model/Entity";
 
 export interface IJournalEntity {
   id?: number | undefined;

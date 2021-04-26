@@ -10,3 +10,9 @@ export class SystemError extends Error {
     this.ERROR_STACK = error.stack ?? "";
   }
 }
+
+export class SQLError extends SystemError {
+  constructor(public error: Error) {
+    super(error);
+  }
+}

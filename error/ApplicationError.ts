@@ -11,3 +11,12 @@ export class RequestError extends ApplicationError {
     this.ERROR_MESSAGE = message;
   }
 }
+
+export class NotFoundError extends ApplicationError {
+  public HTTP_CODE = 404;
+  public ERROR_MESSAGE;
+  public constructor(message: string) {
+    super();
+    this.ERROR_MESSAGE = message;
+  }
+}

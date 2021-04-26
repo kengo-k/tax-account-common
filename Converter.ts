@@ -1,3 +1,5 @@
+const uniq = require("lodash/uniq");
+
 type ConverterItemType = "string" | "number";
 export interface ConverterItem {
   String: ConverterItemType;
@@ -8,25 +10,33 @@ export const ConverterItem: ConverterItem = {
   Number: "number",
 };
 
-type ConverterErrorMessageType = "not exist" | "required" | "type mismatch";
+type ConverterErrorMessageType =
+  | "not exist"
+  | "required"
+  | "type mismatch"
+  | "null";
+
 export interface ConverterErrorMessage {
   NotExist: ConverterErrorMessageType;
   Required: ConverterErrorMessageType;
   TypeMismatch: ConverterErrorMessageType;
+  Null: ConverterErrorMessageType;
 }
 export const ConverterErrorMessage: ConverterErrorMessage = {
   NotExist: "not exist",
   Required: "required",
   TypeMismatch: "type mismatch",
+  Null: "null",
 };
 
 interface ConverterDef {
   name: string;
   type: ConverterItemType;
   required: boolean;
+  allowNull: boolean;
 }
 
-class ConvertCheckResult {
+export class ConvertCheckResult {
   errors: [ConverterErrorMessageType, string][];
   public constructor() {
     this.errors = [];
@@ -51,29 +61,30 @@ export class Converter<T> {
 
   isConvertible(json: any): ConvertCheckResult {
     const result = new ConvertCheckResult();
-    const keys = [...Object.keys(json), ...Object.keys(this.converterDefs)];
-    const checkedKey: any = {};
+    const keys = uniq([
+      ...Object.keys(json),
+      ...Object.keys(this.converterDefs),
+    ]);
     for (const key of keys) {
-      if (key in checkedKey) {
-        continue;
-      }
+      // jsonにdefsに定義されていないキーが存在した場合はエラー
       if (!(key in this.converterDefs)) {
         result.errors.push([ConverterErrorMessage.NotExist, key]);
-        checkedKey[key] = 1;
         continue;
       }
       const def = this.converterDefs[key];
       const value = json[key];
-      if (value == null) {
+      if (value === undefined) {
         if (def.required) {
           result.errors.push([ConverterErrorMessage.Required, key]);
-          checkedKey[key] = 1;
           continue;
+        }
+      } else if (value === null) {
+        if (!def.allowNull) {
+          result.errors.push([ConverterErrorMessage.Null, key]);
         }
       } else {
         if (typeof value !== def.type) {
           result.errors.push([ConverterErrorMessage.TypeMismatch, key]);
-          checkedKey[key] = 1;
           continue;
         }
       }
@@ -81,15 +92,21 @@ export class Converter<T> {
     return result;
   }
 
-  add = (name: string, type: ConverterItemType, required: boolean) => {
-    this.converterDefs[name] = { name, type, required };
+  add = (
+    name: string,
+    type: ConverterItemType,
+    required: boolean,
+    allowNull: boolean
+  ) => {
+    this.converterDefs[name] = { name, type, required, allowNull };
   };
 
-  convert(json: any): T {
-    if (this.isConvertible(json)) {
-      return (json as any) as T;
+  convert(json: any): [T | undefined, ConvertCheckResult] {
+    const result = this.isConvertible(json);
+    if (result.errors.length === 0) {
+      return [(json as any) as T, result];
     } else {
-      throw new Error();
+      return [undefined, result];
     }
   }
 }

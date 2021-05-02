@@ -5,7 +5,7 @@ export abstract class ApplicationError extends Error {
 
 export class RequestError extends ApplicationError {
   public HTTP_CODE = 400;
-  public ERROR_MESSAGE;
+  public ERROR_MESSAGE: string;
   public constructor(message: string) {
     super();
     this.ERROR_MESSAGE = message;
@@ -14,7 +14,7 @@ export class RequestError extends ApplicationError {
 
 export class NotFoundError extends ApplicationError {
   public HTTP_CODE = 404;
-  public ERROR_MESSAGE;
+  public ERROR_MESSAGE: string;
   public constructor(message: string) {
     super();
     this.ERROR_MESSAGE = message;

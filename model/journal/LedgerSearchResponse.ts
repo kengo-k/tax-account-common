@@ -3,6 +3,7 @@ import { Converter, ConverterItem } from "@common/Converter";
 export interface ILedgerSearchResponse {
   nendo: string;
   date: string;
+  another_cd: string;
   karikata_cd: string;
   karikata_value: number;
   kasikata_cd: string;
@@ -15,6 +16,7 @@ export interface ILedgerSearchResponse {
 export class LedgerSearchResponse implements ILedgerSearchResponse {
   public nendo: string;
   public date: string;
+  public another_cd: string;
   public karikata_cd: string;
   public karikata_value: number;
   public kasikata_cd: string;
@@ -31,6 +33,7 @@ export class LedgerSearchResponse implements ILedgerSearchResponse {
     }
     this.nendo = values.nendo;
     this.date = values.date;
+    this.another_cd = values.another_cd;
     this.karikata_cd = values.karikata_cd;
     this.karikata_value = values.karikata_value;
     this.kasikata_cd = values.kasikata_cd;
@@ -45,6 +48,7 @@ export class LedgerSearchResponse implements ILedgerSearchResponse {
     const { add } = converter;
     add("nendo", ConverterItem.String, true, false);
     add("date", ConverterItem.String, true, false);
+    add("another_cd", ConverterItem.String, true, false);
     add("karikata_cd", ConverterItem.String, true, false);
     add("karikata_value", ConverterItem.String, true, false);
     add("kasikata_cd", ConverterItem.String, true, false);

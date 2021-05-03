@@ -1,6 +1,7 @@
 import { Converter, ConverterItem } from "@common/Converter";
 
 export interface ILedgerSearchResponse {
+  journal_id: string;
   nendo: string;
   date: string;
   another_cd: string;
@@ -14,6 +15,7 @@ export interface ILedgerSearchResponse {
 }
 
 export class LedgerSearchResponse implements ILedgerSearchResponse {
+  public journal_id: string;
   public nendo: string;
   public date: string;
   public another_cd: string;
@@ -31,6 +33,7 @@ export class LedgerSearchResponse implements ILedgerSearchResponse {
     if (initialValues != null) {
       values = initialValues;
     }
+    this.journal_id = values.journal_id;
     this.nendo = values.nendo;
     this.date = values.date;
     this.another_cd = values.another_cd;
@@ -46,6 +49,7 @@ export class LedgerSearchResponse implements ILedgerSearchResponse {
   public static isValid(json: any) {
     const converter = new Converter<Partial<LedgerSearchResponse>>();
     const { add } = converter;
+    add("journal_id", ConverterItem.String, true, false);
     add("nendo", ConverterItem.String, true, false);
     add("date", ConverterItem.String, true, false);
     add("another_cd", ConverterItem.String, true, false);

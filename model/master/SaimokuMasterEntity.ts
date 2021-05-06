@@ -44,15 +44,4 @@ export class SaimokuMasterEntity
     this.created_at = values.created_at;
     this.updated_at = values.updated_at;
   }
-
-  public static isValid(json: any) {
-    const converter = new Converter<Partial<ISaimokuMasterEntity>>();
-    const { add } = converter;
-    add("nendo", ConverterItem.String, true, false);
-    add("start_date", ConverterItem.String, true, false);
-    add("end_date", ConverterItem.String, true, false);
-    add("fixed", ConverterItem.Number, true, false);
-    add("description", ConverterItem.Number, true, false);
-    return converter.convert(json);
-  }
 }

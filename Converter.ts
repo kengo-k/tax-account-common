@@ -29,8 +29,8 @@ export const ConverterErrorMessage: ConverterErrorMessage = {
   Null: "null",
 };
 
-interface ConverterDef {
-  name: string;
+interface ConverterDef<T> {
+  name: keyof T;
   type: ConverterItemType;
   required: boolean;
   allowNull: boolean;
@@ -54,7 +54,7 @@ export class ConvertCheckResult {
 }
 
 export class Converter<T> {
-  converterDefs: { [name: string]: ConverterDef };
+  converterDefs: { [name: string]: ConverterDef<T> };
   constructor() {
     this.converterDefs = {};
   }
@@ -93,12 +93,12 @@ export class Converter<T> {
   }
 
   add = (
-    name: string,
+    name: keyof T,
     type: ConverterItemType,
     required: boolean,
     allowNull: boolean
   ) => {
-    this.converterDefs[name] = { name, type, required, allowNull };
+    this.converterDefs[name as string] = { name, type, required, allowNull };
   };
 
   convert(json: any): [T | undefined, ConvertCheckResult] {

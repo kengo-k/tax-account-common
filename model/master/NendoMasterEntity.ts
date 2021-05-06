@@ -44,7 +44,6 @@ export class NendoMasterEntity extends Entity implements INendoMasterEntity {
     add("start_date", ConverterItem.String, true, false);
     add("end_date", ConverterItem.String, true, false);
     add("fixed", ConverterItem.Number, true, false);
-    add("description", ConverterItem.Number, true, false);
     return converter.convert(json);
   }
 }

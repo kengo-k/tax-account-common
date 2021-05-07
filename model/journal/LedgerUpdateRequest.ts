@@ -4,10 +4,10 @@ export interface ILedgerUpdateRequest {
   id: number;
   nendo: string;
   date?: string;
-  ledgerCd: string;
-  anotherCd: string;
-  karikataValue: number | null;
-  kasikataValue: number | null;
+  ledger_cd: string;
+  other_cd: string;
+  karikata_value: number | null;
+  kasikata_value: number | null;
   note?: string;
 }
 
@@ -15,25 +15,26 @@ export class LedgerUpdateRequest implements ILedgerUpdateRequest {
   public id: number;
   public nendo: string;
   public date: string | undefined;
-  public ledgerCd: string;
-  public anotherCd: string;
-  public karikataValue: number | null;
-  public kasikataValue: number | null;
+  public ledger_cd: string;
+  public other_cd: string;
+  public karikata_value: number | null;
+  public kasikata_value: number | null;
   public note: string | undefined;
   constructor(
     initialValues: Partial<ILedgerUpdateRequest> | undefined = undefined
   ) {
-    let values: any = {};
+    let anyValues: any = {};
     if (initialValues != null) {
-      values = initialValues;
+      anyValues = initialValues;
     }
+    const values = anyValues as ILedgerUpdateRequest;
     this.id = values.id;
     this.nendo = values.nendo;
     this.date = values.date;
-    this.ledgerCd = values.ledgerCd;
-    this.anotherCd = values.anotherCd;
-    this.karikataValue = values.karikataValue;
-    this.kasikataValue = values.kasikataValue;
+    this.ledger_cd = values.ledger_cd;
+    this.other_cd = values.other_cd;
+    this.karikata_value = values.karikata_value;
+    this.kasikata_value = values.kasikata_value;
     this.note = values.note;
   }
 
@@ -43,10 +44,10 @@ export class LedgerUpdateRequest implements ILedgerUpdateRequest {
     add("id", ConverterItem.Number, true, false);
     add("nendo", ConverterItem.String, true, true);
     add("date", ConverterItem.String, false, true);
-    add("ledgerCd", ConverterItem.String, true, false);
-    add("anotherCd", ConverterItem.String, false, false);
-    add("karikataValue", ConverterItem.Number, false, true);
-    add("kasikataValue", ConverterItem.Number, false, true);
+    add("ledger_cd", ConverterItem.String, true, false);
+    add("other_cd", ConverterItem.String, false, false);
+    add("karikata_value", ConverterItem.Number, false, true);
+    add("kasikata_value", ConverterItem.Number, false, true);
     add("note", ConverterItem.String, false, true);
     return converter.convert(json);
   }

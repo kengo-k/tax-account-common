@@ -2,24 +2,24 @@ import { Converter, ConverterItem } from "@common/Converter";
 
 export interface ILedgerUpdateRequest {
   id: number;
-  nendo?: string | undefined;
-  date?: string | undefined;
+  nendo: string;
+  date?: string;
   ledgerCd: string;
   anotherCd: string;
-  karikataValue: number | undefined;
-  kasikataValue: number | undefined;
-  note?: string | undefined;
+  karikataValue: number | null;
+  kasikataValue: number | null;
+  note?: string;
 }
 
 export class LedgerUpdateRequest implements ILedgerUpdateRequest {
   public id: number;
-  public nendo?: string | undefined;
-  public date?: string | undefined;
+  public nendo: string;
+  public date: string | undefined;
   public ledgerCd: string;
   public anotherCd: string;
-  public karikataValue: number | undefined;
-  public kasikataValue: number | undefined;
-  public note?: string | undefined;
+  public karikataValue: number | null;
+  public kasikataValue: number | null;
+  public note: string | undefined;
   constructor(
     initialValues: Partial<ILedgerUpdateRequest> | undefined = undefined
   ) {
@@ -40,14 +40,14 @@ export class LedgerUpdateRequest implements ILedgerUpdateRequest {
   public static isValid(json: any) {
     const converter = new Converter<Partial<ILedgerUpdateRequest>>();
     const { add } = converter;
-    add("id", ConverterItem.String, true, false);
+    add("id", ConverterItem.Number, true, false);
     add("nendo", ConverterItem.String, true, true);
-    add("date", ConverterItem.String, true, true);
+    add("date", ConverterItem.String, false, true);
     add("ledgerCd", ConverterItem.String, true, false);
-    add("anotherCd", ConverterItem.String, true, false);
-    add("karikataValue", ConverterItem.String, true, true);
-    add("kasikataValue", ConverterItem.String, true, true);
-    add("note", ConverterItem.String, true, true);
+    add("anotherCd", ConverterItem.String, false, false);
+    add("karikataValue", ConverterItem.Number, false, true);
+    add("kasikataValue", ConverterItem.Number, false, true);
+    add("note", ConverterItem.String, false, true);
     return converter.convert(json);
   }
 }

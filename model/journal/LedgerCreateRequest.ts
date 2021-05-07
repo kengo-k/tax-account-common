@@ -1,25 +1,23 @@
 import { Converter, ConverterItem } from "@common/Converter";
 
 export interface ILedgerCreateRequest {
-  id: number | undefined;
   nendo: string;
   date: string;
   ledgerCd: string;
   anotherCd: string;
-  karikataValue: number | undefined;
-  kasikataValue: number | undefined;
-  note: string;
+  karikataValue: number | null;
+  kasikataValue: number | null;
+  note?: string;
 }
 
 export class LedgerCreateRequest implements ILedgerCreateRequest {
-  public id: number | undefined;
   public nendo: string;
   public date: string;
   public ledgerCd: string;
   public anotherCd: string;
-  public karikataValue: number | undefined;
-  public kasikataValue: number | undefined;
-  public note: string;
+  public karikataValue: number | null;
+  public kasikataValue: number | null;
+  public note: string | undefined;
   constructor(
     initialValues: Partial<ILedgerCreateRequest> | undefined = undefined
   ) {
@@ -27,7 +25,6 @@ export class LedgerCreateRequest implements ILedgerCreateRequest {
     if (initialValues != null) {
       values = initialValues;
     }
-    this.id = values.id;
     this.nendo = values.nendo;
     this.date = values.date;
     this.ledgerCd = values.ledgerCd;
@@ -40,14 +37,13 @@ export class LedgerCreateRequest implements ILedgerCreateRequest {
   public static isValid(json: any) {
     const converter = new Converter<Partial<ILedgerCreateRequest>>();
     const { add } = converter;
-    add("id", ConverterItem.String, true, true);
     add("nendo", ConverterItem.String, true, false);
     add("date", ConverterItem.String, true, false);
     add("ledgerCd", ConverterItem.String, true, false);
     add("anotherCd", ConverterItem.String, true, false);
-    add("karikataValue", ConverterItem.String, true, true);
-    add("kasikataValue", ConverterItem.String, true, true);
-    add("note", ConverterItem.String, true, true);
+    add("karikataValue", ConverterItem.Number, true, true);
+    add("kasikataValue", ConverterItem.Number, true, true);
+    add("note", ConverterItem.String, false, false);
     return converter.convert(json);
   }
 }

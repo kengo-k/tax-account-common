@@ -28,10 +28,11 @@ export class KamokuMasterEntity extends Entity implements IKamokuMasterEntity {
     initialValues: Partial<IKamokuMasterEntity> | undefined = undefined
   ) {
     super();
-    let values: any = {};
+    let anyValues: any = {};
     if (initialValues != null) {
-      values = initialValues;
+      anyValues = initialValues;
     }
+    const values = anyValues as IKamokuMasterEntity;
     this.id = values.id;
     this.kamoku_cd = values.kamoku_cd;
     this.kamoku_full_name = values.kamoku_full_name;
@@ -41,17 +42,5 @@ export class KamokuMasterEntity extends Entity implements IKamokuMasterEntity {
     this.description = values.description;
     this.created_at = values.created_at;
     this.updated_at = values.updated_at;
-  }
-
-  public static isValid(json: any) {
-    const converter = new Converter<Partial<IKamokuMasterEntity>>();
-    const { add } = converter;
-    add("kamoku_cd", ConverterItem.String, true, false);
-    add("kamoku_full_name", ConverterItem.String, true, false);
-    add("kamoku_ryaku_name", ConverterItem.String, true, false);
-    add("kamoku_kana_name", ConverterItem.Number, true, false);
-    add("kamoku_bunrui_cd", ConverterItem.Number, true, false);
-    add("description", ConverterItem.Number, true, false);
-    return converter.convert(json);
   }
 }

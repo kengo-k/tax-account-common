@@ -30,10 +30,11 @@ export class SaimokuMasterEntity
     initialValues: Partial<ISaimokuMasterEntity> | undefined = undefined
   ) {
     super();
-    let values: any = {};
+    let anyValues: any = {};
     if (initialValues != null) {
-      values = initialValues;
+      anyValues = initialValues;
     }
+    const values = anyValues as ISaimokuMasterEntity;
     this.id = values.id;
     this.kamoku_cd = values.kamoku_cd;
     this.saimoku_cd = values.saimoku_cd;

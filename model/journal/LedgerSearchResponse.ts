@@ -29,10 +29,11 @@ export class LedgerSearchResponse implements ILedgerSearchResponse {
   constructor(
     initialValues: Partial<LedgerSearchResponse> | undefined = undefined
   ) {
-    let values: any = {};
+    let anyValues: any = {};
     if (initialValues != null) {
-      values = initialValues;
+      anyValues = initialValues;
     }
+    const values = anyValues as LedgerSearchResponse;
     this.journal_id = values.journal_id;
     this.nendo = values.nendo;
     this.date = values.date;
@@ -44,22 +45,5 @@ export class LedgerSearchResponse implements ILedgerSearchResponse {
     this.karikata_sum = values.karikata_sum;
     this.kasikata_sum = values.kasikata_sum;
     this.acc = values.acc;
-  }
-
-  public static isValid(json: any) {
-    const converter = new Converter<Partial<LedgerSearchResponse>>();
-    const { add } = converter;
-    add("journal_id", ConverterItem.String, true, false);
-    add("nendo", ConverterItem.String, true, false);
-    add("date", ConverterItem.String, true, false);
-    add("another_cd", ConverterItem.String, true, false);
-    add("karikata_cd", ConverterItem.String, true, false);
-    add("karikata_value", ConverterItem.String, true, false);
-    add("kasikata_cd", ConverterItem.String, true, false);
-    add("kasikata_value", ConverterItem.String, true, false);
-    add("karikata_sum", ConverterItem.String, true, false);
-    add("kasikata_sum", ConverterItem.String, true, false);
-    add("acc", ConverterItem.Number, true, false);
-    return converter.convert(json);
   }
 }

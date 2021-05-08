@@ -24,10 +24,11 @@ export class NendoMasterEntity extends Entity implements INendoMasterEntity {
     initialValues: Partial<INendoMasterEntity> | undefined = undefined
   ) {
     super();
-    let values: any = {};
+    let anyValues: any = {};
     if (initialValues != null) {
-      values = initialValues;
+      anyValues = initialValues;
     }
+    const values = anyValues as INendoMasterEntity;
     this.id = values.id;
     this.nendo = values.nendo;
     this.start_date = values.start_date;
@@ -35,15 +36,5 @@ export class NendoMasterEntity extends Entity implements INendoMasterEntity {
     this.fixed = values.fixed;
     this.created_at = values.created_at;
     this.updated_at = values.updated_at;
-  }
-
-  public static isValid(json: any) {
-    const converter = new Converter<Partial<INendoMasterEntity>>();
-    const { add } = converter;
-    add("nendo", ConverterItem.String, true, false);
-    add("start_date", ConverterItem.String, true, false);
-    add("end_date", ConverterItem.String, true, false);
-    add("fixed", ConverterItem.Number, true, false);
-    return converter.convert(json);
   }
 }

@@ -14,21 +14,13 @@ export class SaimokuSearchResponse implements ISaimokuSearchResponse {
   constructor(
     initialValues: Partial<ISaimokuSearchResponse> | undefined = undefined
   ) {
-    let values: any = {};
+    let anyValues: any = {};
     if (initialValues != null) {
-      values = initialValues;
+      anyValues = initialValues;
     }
+    const values = anyValues as ISaimokuSearchResponse;
     this.kamoku_cd = values.kamoku_cd;
     this.saimoku_cd = values.saimoku_cd;
     this.kamoku_bunrui_type = values.kamoku_bunrui_type;
-  }
-
-  public static isValid(json: any) {
-    const converter = new Converter<Partial<ISaimokuSearchResponse>>();
-    const { add } = converter;
-    add("kamoku_cd", ConverterItem.String, true, false);
-    add("saimoku_cd", ConverterItem.String, true, false);
-    add("kamoku_bunrui_type", ConverterItem.String, true, false);
-    return converter.convert(json);
   }
 }

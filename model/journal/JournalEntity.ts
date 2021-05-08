@@ -1,9 +1,5 @@
 import { Entity } from "@common/model/Entity";
-import {
-  Converter,
-  ConverterItem,
-  ConvertCheckResult,
-} from "@common/Converter";
+import { Converter, ConverterItem } from "@common/Converter";
 
 export interface IJournalEntity {
   id?: number | undefined;
@@ -33,10 +29,11 @@ export class JournalEntity extends Entity implements IJournalEntity {
   public updated_at: string | undefined;
   constructor(initialValues: Partial<IJournalEntity> | undefined = undefined) {
     super();
-    let values: any = {};
+    let anyValues: any = {};
     if (initialValues != null) {
-      values = initialValues;
+      anyValues = initialValues;
     }
+    const values = anyValues as IJournalEntity;
     this.id = values.id;
     this.nendo = values.nendo;
     this.date = values.date;

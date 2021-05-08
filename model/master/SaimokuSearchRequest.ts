@@ -10,10 +10,11 @@ export class SaimokuSearchRequest implements ISaimokuSearchRequest {
   constructor(
     initialValues: Partial<ISaimokuSearchRequest> | undefined = undefined
   ) {
-    let values: any = {};
+    let anyValues: any = {};
     if (initialValues != null) {
-      values = initialValues;
+      anyValues = initialValues;
     }
+    const values = anyValues as ISaimokuSearchRequest;
     this.saimoku_cd = values.saimoku_cd;
   }
 

@@ -1,7 +1,7 @@
 import { Converter, ConverterItem } from "@common/Converter";
 
 export interface ILedgerSearchResponse {
-  journal_id: string;
+  journal_id: number;
   nendo: string;
   date: string;
   another_cd: string;
@@ -15,7 +15,7 @@ export interface ILedgerSearchResponse {
 }
 
 export class LedgerSearchResponse implements ILedgerSearchResponse {
-  public journal_id: string;
+  public journal_id: number;
   public nendo: string;
   public date: string;
   public another_cd: string;

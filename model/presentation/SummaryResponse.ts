@@ -3,13 +3,13 @@ import { ITaxCalcResponse } from "@common/model/journal/TaxCalcResponse";
 export interface ISummaryResponse {
   sales: number;
   expenses: number;
-  tax: ITaxCalcResponse;
+  tax: ITaxCalcResponse | undefined;
 }
 
 export class SummaryResponse implements ISummaryResponse {
   public sales: number;
   public expenses: number;
-  public tax: ITaxCalcResponse;
+  public tax: ITaxCalcResponse | undefined;
 
   constructor(
     initialValues: Partial<ISummaryResponse> | undefined = undefined

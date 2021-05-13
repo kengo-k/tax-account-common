@@ -1,8 +1,13 @@
 export class Entity {}
 
 export enum EntitySearchType {
-  StringEqual,
-  StringLike,
+  Eq,
+  LtE,
+  Lt,
+  GtE,
+  Gt,
+  Between,
+  Like,
 }
 
 export enum Order {
@@ -10,19 +15,44 @@ export enum Order {
   Desc = "desc",
 }
 
-interface StringEqual {
-  searchType: EntitySearchType.StringEqual;
-  value: string;
+export interface Eq {
+  searchType: EntitySearchType.Eq;
+  value: string | number;
 }
 
-interface StringLike {
-  searchType: EntitySearchType.StringLike;
+export interface LtE {
+  searchType: EntitySearchType.LtE;
+  value: string | number;
+}
+
+export interface Lt {
+  searchType: EntitySearchType.Lt;
+  value: string | number;
+}
+
+export interface GtE {
+  searchType: EntitySearchType.GtE;
+  value: string | number;
+}
+
+export interface Gt {
+  searchType: EntitySearchType.Gt;
+  value: string | number;
+}
+
+export interface Between {
+  searchType: EntitySearchType.Between;
+  fromTo: [string, string] | [number, number];
+}
+
+export interface Like {
+  searchType: EntitySearchType.Like;
   value: string;
   before: boolean;
   after: boolean;
 }
 
-export type EntitySearchItem = StringEqual | StringLike;
+export type EntitySearchItem = Eq | LtE | Lt | GtE | Gt | Between | Like;
 export type EntitySearchCondition<T> = Partial<
   Record<keyof T, EntitySearchItem>
 > & {

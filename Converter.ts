@@ -109,8 +109,18 @@ export class Converter<T> {
           }
         } else if (def.type === ConverterItem.Boolean) {
           if (typeof value !== "boolean") {
-            result.errors.push([ConverterErrorMessage.TypeMismatch, key]);
-            continue;
+            if (
+              !(typeof value === "string" && ["true", "false"].includes(value))
+            ) {
+              result.errors.push([ConverterErrorMessage.TypeMismatch, key]);
+              continue;
+            } else {
+              if (value === "true") {
+                json[key] = true;
+              } else {
+                json[key] = false;
+              }
+            }
           }
         } else if (def.type === ConverterItem.EntitySearchItem) {
           const searchTypeKey = "searchType";

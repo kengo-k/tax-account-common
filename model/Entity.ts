@@ -1,3 +1,4 @@
+import { PagingRequest } from "@common/model/PagingCondition";
 export class Entity {}
 
 export enum EntitySearchType {
@@ -57,4 +58,5 @@ export type EntitySearchCondition<T> = Partial<
   Record<keyof T, EntitySearchItem>
 > & {
   orderBy?: [keyof T, Order][];
+  paging?: PagingRequest;
 };

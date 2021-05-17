@@ -1,18 +1,25 @@
 import { Converter, ConverterItem } from "@common/Converter";
+import { IPagingRequest, PagingRequest } from "@common/model/PagingCondition";
 
-export interface ILedgerSearchRequest {
+interface _ILedgerSearchRequest {
   nendo: string;
   ledger_cd: string;
   month?: string;
 }
 
-export class LedgerSearchRequest implements ILedgerSearchRequest {
+export type ILedgerSearchRequest = _ILedgerSearchRequest & IPagingRequest;
+
+export class LedgerSearchRequest
+  extends PagingRequest
+  implements ILedgerSearchRequest
+{
   public nendo: string;
   public ledger_cd: string;
   public month: string | undefined;
   constructor(
     initialValues: Partial<ILedgerSearchRequest> | undefined = undefined
   ) {
+    super(initialValues);
     let anyValues: any = {};
     if (initialValues != null) {
       anyValues = initialValues;
@@ -29,6 +36,7 @@ export class LedgerSearchRequest implements ILedgerSearchRequest {
     add("nendo", ConverterItem.String, true, false);
     add("ledger_cd", ConverterItem.String, true, false);
     add("month", ConverterItem.String, false, false);
+    PagingRequest.addValidator(add);
     return converter.convert(json);
   }
 }

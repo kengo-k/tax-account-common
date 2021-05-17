@@ -99,8 +99,10 @@ export class Converter<T> {
       } else {
         if (def.type === ConverterItem.Number) {
           if (typeof value !== "number") {
-            result.errors.push([ConverterErrorMessage.TypeMismatch, key]);
-            continue;
+            if (!(typeof value === "string" && value === `${Number(value)}`)) {
+              result.errors.push([ConverterErrorMessage.TypeMismatch, key]);
+              continue;
+            }
           }
         } else if (def.type === ConverterItem.String) {
           if (typeof value !== "string") {

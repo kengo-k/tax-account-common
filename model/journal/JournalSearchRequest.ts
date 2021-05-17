@@ -1,6 +1,7 @@
 import { Converter, ConverterItem } from "@common/Converter";
+import { IPagingRequest, PagingRequest } from "@common/model/PagingCondition";
 
-export interface IJournalSearchRequest {
+interface _IJournalSearchRequest {
   nendo: string;
   date_from?: string;
   date_to?: string;
@@ -8,7 +9,12 @@ export interface IJournalSearchRequest {
   largest_order?: boolean; // 金額の降順で取得する。falseの場合は昇順
 }
 
-export class JournalSearchRequest implements IJournalSearchRequest {
+export type IJournalSearchRequest = _IJournalSearchRequest & IPagingRequest;
+
+export class JournalSearchRequest
+  extends PagingRequest
+  implements IJournalSearchRequest
+{
   public nendo: string;
   public date_from: string | undefined;
   public date_to: string | undefined;
@@ -17,6 +23,7 @@ export class JournalSearchRequest implements IJournalSearchRequest {
   constructor(
     initialValues: Partial<IJournalSearchRequest> | undefined = undefined
   ) {
+    super(initialValues);
     let anyValues: any = {};
     if (initialValues != null) {
       anyValues = initialValues;
@@ -37,6 +44,7 @@ export class JournalSearchRequest implements IJournalSearchRequest {
     add("date_to", ConverterItem.String, false, false);
     add("latest_order", ConverterItem.Boolean, false, false);
     add("largest_order", ConverterItem.Boolean, false, false);
+    PagingRequest.addValidator(add);
     return converter.convert(json);
   }
 }

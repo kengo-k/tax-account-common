@@ -1,7 +1,7 @@
-import { NendoMasterEntity } from "@common/model/master/NendoMasterEntity";
-import { KamokuMasterEntity } from "@common/model/master/KamokuMasterEntity";
-import { SaimokuMasterEntity } from "@common/model/master/SaimokuMasterEntity";
-import { LedgerSearchResponse } from "@common/model/journal/LedgerSearchResponse";
+import { NendoMasterEntity } from "@/model/master/NendoMasterEntity";
+import { KamokuMasterEntity } from "@/model/master/KamokuMasterEntity";
+import { SaimokuMasterEntity } from "@/model/master/SaimokuMasterEntity";
+import { LedgerSearchResponse } from "@/model/journal/LedgerSearchResponse";
 
 export interface IInitSearchResponse {
   nendo_list: NendoMasterEntity[];

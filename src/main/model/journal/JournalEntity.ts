@@ -1,5 +1,5 @@
-import { Entity } from "@common/model/Entity";
-import { Converter, ConverterItem } from "@common/Converter";
+import { Entity } from "@/model/Entity";
+import { Converter, ConverterItem } from "@/Converter";
 
 export interface IJournalEntity {
   id?: number | undefined;

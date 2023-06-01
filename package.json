@@ -4,12 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
-    "url": "ssh://github/kengo-k/account-common"
+    "url": "https://github.com/kengo-k/account-common"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "kengo-k",
+  "license": "ISC",
+  "dependencies": {
+    "lodash.uniq": "^4.5.0"
+  },
+  "devDependencies": {
+    "@types/lodash.uniq": "^4.5.7",
+    "@types/node": "^20.2.5",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.0.4"
+  }
 }

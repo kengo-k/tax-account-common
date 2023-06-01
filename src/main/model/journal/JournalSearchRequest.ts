@@ -1,5 +1,5 @@
-import { Converter, ConverterItem } from "@common/Converter";
-import { IPagingRequest, PagingRequest } from "@common/model/PagingCondition";
+import { Converter, ConverterItem } from "@/Converter";
+import { IPagingRequest, PagingRequest } from "@/model/PagingCondition";
 
 interface _IJournalSearchRequest {
   nendo: string;

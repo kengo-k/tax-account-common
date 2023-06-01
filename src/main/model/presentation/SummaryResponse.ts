@@ -1,4 +1,4 @@
-import { ITaxCalcResponse } from "@common/model/journal/TaxCalcResponse";
+import { ITaxCalcResponse } from "@/model/journal/TaxCalcResponse";
 
 export interface ISummaryResponse {
   sales: number;

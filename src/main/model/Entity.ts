@@ -1,4 +1,4 @@
-import { PagingRequest } from "@common/model/PagingCondition";
+import { PagingRequest } from "@/model/PagingCondition";
 export class Entity {}
 
 export enum EntitySearchType {

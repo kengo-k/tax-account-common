@@ -8,7 +8,7 @@ import {
   Gt,
   Between,
   Like,
-} from "@common/model/Entity";
+} from "@/model/Entity";
 
 export enum ConverterItem {
   String,

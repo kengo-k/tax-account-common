@@ -1,4 +1,4 @@
-import { Converter, ConverterItem } from "@common/Converter";
+import { Converter, ConverterItem } from "@/Converter";
 
 export interface ILedgerSearchResponse {
   journal_id: number;

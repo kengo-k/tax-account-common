@@ -1,7 +1,8 @@
 {
     "compilerOptions": {
+      "declaration": true,
       "outDir": "./dist",
-      "baseUrl": "./",
+      "baseUrl": "src",
       "lib": ["es2019"],
       "target": "es6",
       "module": "commonjs",
@@ -10,8 +11,8 @@
       "experimentalDecorators": true,
       "sourceMap": true,
       "paths": {
-        "@/test/*": ["src/test/*"],
-        "@/*": ["src/main/*"]
+        "@test/*": ["test/*"],
+        "@/*": ["main/*"]
       },
       "strict": true
     },

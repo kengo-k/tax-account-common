@@ -1,0 +1,15 @@
+{
+  "name": "account-common",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://github/kengo-k/account-common"
+  },
+  "author": "",
+  "license": "ISC"
+}

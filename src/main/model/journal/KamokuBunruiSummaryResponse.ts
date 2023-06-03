@@ -5,7 +5,8 @@ export interface IKamokuBunruiSummaryResponse {
 }
 
 export class KamokuBunruiSummaryResponse
-  implements IKamokuBunruiSummaryResponse {
+  implements IKamokuBunruiSummaryResponse
+{
   public karikata_kamoku_bunrui_sum: number;
   public kasikata_kamoku_bunrui_sum: number;
   public value: number;

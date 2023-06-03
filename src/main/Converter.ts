@@ -1,14 +1,5 @@
 const uniq = require("lodash/uniq");
-import {
-  EntitySearchType,
-  Eq,
-  LtE,
-  Lt,
-  GtE,
-  Gt,
-  Between,
-  Like,
-} from "@/model/Entity";
+import { Between, EntitySearchType, Eq, Like } from "@/model/Entity";
 
 export enum ConverterItem {
   String,

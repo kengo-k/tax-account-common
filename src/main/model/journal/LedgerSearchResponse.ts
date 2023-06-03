@@ -1,5 +1,3 @@
-import { Converter, ConverterItem } from "@/Converter";
-
 export interface ILedgerSearchResponse {
   journal_id: number;
   nendo: string;

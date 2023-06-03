@@ -1,5 +1,3 @@
-import { Converter, ConverterItem } from "@/Converter";
-
 export interface ISaimokuSearchResponse {
   kamoku_cd: string;
   saimoku_cd: string;

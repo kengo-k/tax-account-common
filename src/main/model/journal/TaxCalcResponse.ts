@@ -1,5 +1,3 @@
-import { Converter, ConverterItem } from "@/Converter";
-
 export interface ITaxCalcResponse {
   sales: number;
   expenses: number;

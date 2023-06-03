@@ -1,5 +1,4 @@
 import { Entity } from "@/model/Entity";
-import { Converter, ConverterItem } from "@/Converter";
 
 export interface ISaimokuMasterEntity {
   id?: number | undefined;
@@ -15,7 +14,8 @@ export interface ISaimokuMasterEntity {
 
 export class SaimokuMasterEntity
   extends Entity
-  implements ISaimokuMasterEntity {
+  implements ISaimokuMasterEntity
+{
   public id: number | undefined;
   public kamoku_cd: string;
   public saimoku_cd: string;

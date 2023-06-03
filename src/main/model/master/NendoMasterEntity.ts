@@ -1,5 +1,4 @@
 import { Entity } from "@/model/Entity";
-import { Converter, ConverterItem } from "@/Converter";
 
 export interface INendoMasterEntity {
   id?: number | undefined;

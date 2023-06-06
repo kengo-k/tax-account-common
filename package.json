@@ -1,5 +1,5 @@
 {
-  "name": "account-common",
+  "name": "@kengo-k/account-common",
   "version": "1.0.0",
   "description": "",
   "type": "module",

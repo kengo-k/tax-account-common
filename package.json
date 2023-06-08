@@ -1,6 +1,6 @@
 {
   "name": "@kengo-k/account-common",
-  "version": "1.0.5",
+  "version": "1.0.8",
   "description": "",
   "type": "module",
   "main": "dist/index.js",
@@ -16,12 +16,33 @@
     "./constant/saimoku": {
       "types": "./dist/constant/saimoku.d.ts",
       "import": "./dist/constant/saimoku.js"
+    },
+    "./constant/kamokuBunrui": {
+      "types": "./dist/constant/kamokuBunrui.d.ts",
+      "import": "./dist/constant/kamokuBunrui.js"
+    },
+    "./error/ApplicationError": {
+      "types": "./dist/error/ApplicationError.d.ts",
+      "import": "./dist/error/ApplicationError.js"
+    },
+    "./error/SystemError": {
+      "types": "./dist/error/SystemError.d.ts",
+      "import": "./dist/error/SystemError.js"
     }
   },
   "typesVersions": {
     "*": {
       "constant/saimoku": [
         "dist/constant/saimoku"
+      ],
+      "constant/kamokuBunrui": [
+        "dist/constant/kamokuBunrui"
+      ],
+      "error/ApplicationError": [
+        "dist/error/ApplicationError"
+      ],
+      "error/SystemError": [
+        "dist/error/SystemError"
       ]
     }
   },

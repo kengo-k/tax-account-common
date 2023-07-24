@@ -1,6 +1,6 @@
 {
   "name": "@kengo-k/account-common",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "",
   "type": "module",
   "main": "dist/index.js",
@@ -32,17 +32,8 @@
   },
   "typesVersions": {
     "*": {
-      "constant/saimoku": [
-        "dist/constant/saimoku"
-      ],
-      "constant/kamokuBunrui": [
-        "dist/constant/kamokuBunrui"
-      ],
-      "error/ApplicationError": [
-        "dist/error/ApplicationError"
-      ],
-      "error/SystemError": [
-        "dist/error/SystemError"
+      "*": [
+        "dist/*"
       ]
     }
   },
